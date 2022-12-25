@@ -5,9 +5,10 @@
 void ADD_BOOK();
 void DEL_BOOK();
 void FIND_BOOK();
+void LIST_BOOK();
 using namespace std;
 
-int sum = 1;//书总数
+int sum = 0;//书总数
 
 struct date {
 	int year;
@@ -35,6 +36,7 @@ struct book_st {
 
 int main() {
 	char com[15];//储存命令
+	printf("Welcome to the Library Management System (YGY in December 2022)\n");
 	while (1) {
 		printf("Enter your command(You can enter ""HELP"" to get help):\n");
 		printf(">>>");
@@ -50,6 +52,9 @@ int main() {
 			case U("ADD"):
 				ADD_BOOK();
 				break;
+			case U("LIST"):
+				LIST_BOOK();
+				break;
 			default:
 				printf("The specified command was not found.\n");
 				break;
@@ -59,6 +64,7 @@ int main() {
 }
 
 void ADD_BOOK() {
+	sum++;
 	printf("The number of the book you want to add is: ");
 	scanf_s("%d",&state[sum].book.Book_number);
 	printf("The name of the book you want to add is: ");
@@ -66,17 +72,32 @@ void ADD_BOOK() {
 	printf("Whether the book is loaned?(1/0)");
 	scanf_s("%d", &state[sum].situation);
 	if (state[sum].situation) {
-
+		printf("The student's name is:");
+		scanf_s("%s", state[sum].student.Student_name,20);
+		printf("The student's number is:");
+		scanf_s("%s", state[sum].student.Student_number,20);
+		printf("The borrowing date is (?/?/?) :");
+		scanf_s("%d/%d/%d", &state[sum].Borrowing_date.year, &state[sum].Borrowing_date.month, &state[sum].Borrowing_date.day);
+		printf("The estimated return date is (?/?/?) :");
+		scanf_s("%d/%d/%d", &state[sum].Return_date.year, &state[sum].Return_date.month, &state[sum].Return_date.day);
 	}
-	sum++;
+	printf("The addition of books was successful, and there are currently %d books in the system \n", sum);
+}
+
+void LIST_BOOK() {
+	printf("There are currently %d books in the system \n", sum);
+	if (sum > 0) {
+		for (int i = 1; i <= sum; i++) {
+			printf("Book:    %d.%s    %d \n", i, &state[i].book.Book_name, state[i].book.Book_number);
+		}
+	}
+}
+
+void FIND_BOOK() {
+	
 }
 
 void DEL_BOOK() {
 	sum--;
-	state[sum];
-}
-
-void FIND_BOOK() {
-	sum++;
 	state[sum];
 }
