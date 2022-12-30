@@ -1,0 +1,3 @@
+2
+Book name:   BOOK1	Book number: 1	situation :1	The book is checked out.	The borrower's name is: YGY	The borrower's student number is: 2252200213	The borrowing date is: 2022/12/30	The estimated return date is: 2022/12/31
+Book name:   BOOK2	Book number: 2	situation :0	The book is not checked out.
